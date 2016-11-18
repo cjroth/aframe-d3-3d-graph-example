@@ -1,5 +1,3 @@
-import lodash
-
 var graph = buildGraph(20, 40, 5, 5)
 
 var color = d3.scale.category20()
@@ -15,13 +13,15 @@ var force = d3.layout.force3D()
     .size([width, height, height])
 
 force
-	.nodes(graph.nodes)
-	.links(graph.links)
-	.start()
+    .nodes(graph.nodes)
+    .links(graph.links)
+    .start()
 
-var link = scene.selectAll('a-entity').filter('.link')
-	.data(graph.links)
-	.enter().append('a-entity')
+var link = scene
+    .selectAll('a-entity')
+    .filter('.link')
+    .data(graph.links)
+    .enter().append('a-entity')
     .attr('class', 'link')
 
 var node = scene
