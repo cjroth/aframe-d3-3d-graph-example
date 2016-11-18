@@ -1,0 +1,26 @@
+{
+  "name": "aframe-d3-3d-graph-example",
+  "version": "1.0.0",
+  "description": "An example of a 3D weighted graph using D3.js and Aframe.",
+  "main": "main.js",
+  "dependencies": {
+    "aframe": "^0.3.2",
+    "aframe-meshline-component": "^0.2.0",
+    "d3": "^4.3.0",
+    "lodash": "^4.17.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjroth/aframe-d3-3d-graph-example.git"
+  },
+  "author": "Chris Roth <chris@cjroth.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cjroth/aframe-d3-3d-graph-example/issues"
+  },
+  "homepage": "https://github.com/cjroth/aframe-d3-3d-graph-example"
+}
