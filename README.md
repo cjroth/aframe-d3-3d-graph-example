@@ -18,3 +18,7 @@ you try to load index.html directly, you will likely see an error.
 # Notes
 
 - The performance is a bit slow and it seems that refreshing the page crashes WebGL. I'm not sure why this is. Adding more than about 50 links on my MacBook Air seems to be more than it can handle.
+
+# License
+
+[MIT Licensed](LICENSE)
