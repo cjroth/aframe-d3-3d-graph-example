@@ -6,12 +6,14 @@
   "dependencies": {
     "aframe": "^0.3.2",
     "aframe-meshline-component": "^0.2.0",
+    "browserify": "^13.1.1",
     "d3": "3",
     "lodash": "^4.17.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "browserify main.js > main.combined.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,5 @@
   "bugs": {
     "url": "https://github.com/cjroth/aframe-d3-3d-graph-example/issues"
   },
-  "homepage": "https://github.com/cjroth/aframe-d3-3d-graph-example"
+  "homepage": "https://cjroth.com/aframe-d3-3d-graph-example"
 }
