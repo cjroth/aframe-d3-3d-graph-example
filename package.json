@@ -6,7 +6,7 @@
   "dependencies": {
     "aframe": "^0.3.2",
     "aframe-meshline-component": "^0.2.0",
-    "d3": "^4.3.0",
+    "d3": "3",
     "lodash": "^4.17.2"
   },
   "devDependencies": {},

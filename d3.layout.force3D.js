@@ -1,10 +1,5 @@
-(function(){
-
-  if(!(d3 && d3.layout && d3.geom)){
-    throw "force3D: Unable to inject d3.layout.force3D"
-    + " into d3.js . Be sure to load D3js beforehand.";
-  }
-
+module.exports = function(d3) {
+    
   var abs = Math.abs;
 
   function d3_geom_pointX(d) {
@@ -21,7 +16,6 @@
       return v;
     };
   }
-  //d3.functor = d3_functor;
 
   function d3_identity(d) {
     return d;
@@ -589,4 +583,4 @@ function dragmove(d) {
 return d3.rebind(force, event, "on");
 };
 
-})();
+}

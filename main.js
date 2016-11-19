@@ -1,77 +1,82 @@
-(function() {
+const _ = require('lodash')
+const d3 = require('d3')
+window.d3 = d3
+require('./d3.layout.force3D.js')(d3)
+require('aframe')
+require('aframe-meshline-component')
 
-    var graph = buildGraph(20, 40, 5, 5)
+window.onload = () => {
 
-    var color = d3.scale.category20()
+	var graph = buildGraph(20, 40, 5, 5)
 
-    var scene = d3.select('a-scene')
+	var color = d3.scale.category20()
 
-    var width = scene.attr('width')
-    var height = scene.attr('height')
+	var scene = d3.select('a-scene')
 
-    var force = d3.layout.force3D()
-    	.charge(-5)
-    	.linkDistance(1)
-        .size([width, height, height])
+	var width = scene.attr('width')
+	var height = scene.attr('height')
 
-    force
-        .nodes(graph.nodes)
-        .links(graph.links)
-        .start()
+	var force = d3.layout.force3D()
+		.charge(-5)
+		.linkDistance(1)
+	    .size([width, height, height])
 
-    var link = scene
-        .selectAll('a-entity')
-        .filter('.link')
-        .data(graph.links)
-        .enter().append('a-entity')
-        .attr('class', 'link')
+	force
+	    .nodes(graph.nodes)
+	    .links(graph.links)
+	    .start()
 
-    var node = scene
-        .selectAll('a-sphere')
-    	.data(graph.nodes)
-    	.enter().append('a-sphere')
-    	.attr('class', 'node')
-    	.attr('radius', 1)
-    	.attr('color', d => color(d.group))
+	var link = scene
+	    .selectAll('a-entity')
+	    .filter('.link')
+	    .data(graph.links)
+	    .enter().append('a-entity')
+	    .attr('class', 'link')
 
-    force.on('tick', function() {
-    	node.attr('position', d => `${d.x} ${d.y} ${d.z}`)
-        link.attr('meshline', d => {
-            let sourcePoint = point(d.source)
-            let targetPoint = point(d.target)
-            return `lineWidth: 1; path: ${sourcePoint.join(' ')}, ${targetPoint.join(' ')}}; color: #ccc`
-        })
-    })
+	var node = scene
+	    .selectAll('a-sphere')
+		.data(graph.nodes)
+		.enter().append('a-sphere')
+		.attr('class', 'node')
+		.attr('radius', 1)
+		.attr('color', d => color(d.group))
 
-    function point(p) {
-        return [p.x, p.y, p.z]
-    }
+	force.on('tick', function() {
+		node.attr('position', d => `${d.x} ${d.y} ${d.z}`)
+	    link.attr('meshline', d => {
+	        let sourcePoint = point(d.source)
+	        let targetPoint = point(d.target)
+	        return `lineWidth: 1; path: ${sourcePoint.join(' ')}, ${targetPoint.join(' ')}}; color: #ccc`
+	    })
+	})
 
-    function buildGraph(nodes, links, groups, maxWeight) {
+	function point(p) {
+	    return [p.x, p.y, p.z]
+	}
 
-        let data = {
-            nodes: [],
-            links: []
-        }
+	function buildGraph(nodes, links, groups, maxWeight) {
 
-        for (let n = 0; n < nodes; n++) {
-            data.nodes.push({
-                id: n,
-                group: _.random(1, groups)
-            })
-        }
+	    let data = {
+	        nodes: [],
+	        links: []
+	    }
 
-        for (let l = 0; l < links; l++) {
-            data.links.push({
-                source: _.random(0, nodes - 1),
-                target: _.random(0, nodes - 1),
-                value: _.random(1, maxWeight)
-            })
-        }
+	    for (let n = 0; n < nodes; n++) {
+	        data.nodes.push({
+	            id: n,
+	            group: _.random(1, groups)
+	        })
+	    }
 
-        return data
+	    for (let l = 0; l < links; l++) {
+	        data.links.push({
+	            source: _.random(0, nodes - 1),
+	            target: _.random(0, nodes - 1),
+	            value: _.random(1, maxWeight)
+	        })
+	    }
 
-    }
+	    return data
 
-
-})()
+	}
+}
