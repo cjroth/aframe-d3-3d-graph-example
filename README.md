@@ -6,7 +6,7 @@ This is a demo of [Aframe](https://aframe.io/) and [D3](https://d3js.org/) toget
 
 # Install
 
-Use `npm install` or `yarn install` which will install all dependencies and
+Use `npm install` or `yarn add` which will install all dependencies and
 run `browserify main.js > main.combined.js` to build the project.
 
 # Run
